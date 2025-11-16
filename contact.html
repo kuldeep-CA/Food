@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact - Neha's Street</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html"><h1>🚐 Food Van</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="cart.html" class="cart-link">🛒 Cart <span id="cart-count">0</span></a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h1>Contact Us</h1>
+            
+            <div class="contact-content">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    <div class="info-card">
+                        <h3>📍 Address</h3>
+                        <p>123 Main Street<br>Downtown District<br>City, State 12345</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📞 Phone</h3>
+                        <p><a href="tel:+1234567890">(123) 456-7890</a></p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📧 Email</h3>
+                        <p><a href="mailto:info@foodvan.com">info@foodvan.com</a></p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🕐 Hours</h3>
+                        <p>Mon - Fri: 10:00 AM - 10:00 PM<br>Sat - Sun: 11:00 AM - 11:00 PM</p>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h2>Send us a Message</h2>
+                    <form id="contact-form" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                    <div id="form-message" class="form-message"></div>
+                </div>
+            </div>
+
+            <!-- Locations Section -->
+            <div class="locations-section">
+                <h2>Find Us</h2>
+                <div class="locations-grid">
+                    <div class="location-card">
+                        <h3>Downtown Location</h3>
+                        <p>📍 123 Main Street</p>
+                        <p>Mon - Sun: 10:00 AM - 10:00 PM</p>
+                    </div>
+                    <div class="location-card">
+                        <h3>Park Location</h3>
+                        <p>📍 Central Park West</p>
+                        <p>Wed - Sun: 12:00 PM - 9:00 PM</p>
+                    </div>
+                    <div class="location-card">
+                        <h3>Beach Location</h3>
+                        <p>📍 Beachfront Promenade</p>
+                        <p>Fri - Sun: 11:00 AM - 11:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Food Van. All rights reserved. | Follow us on social media</p>
+            <div class="social-links">
+                <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>
