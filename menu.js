@@ -524,6 +524,126 @@ const menuItems = [
         category: 'chinese',
         icon: '🍚',
         description: 'Fragrant jasmine rice'
+    },
+    {
+        id: 66,
+        name: 'Chili Oil Chicken',
+        price: 8.99,
+        category: 'chinese',
+        icon: '🌶️',
+        description: 'Spicy chicken in chili oil sauce'
+    },
+    {
+        id: 67,
+        name: 'Black Bean Sauce Beef',
+        price: 8.49,
+        category: 'chinese',
+        icon: '🍖',
+        description: 'Tender beef with black bean sauce'
+    },
+    {
+        id: 68,
+        name: 'Cashew Chicken',
+        price: 8.49,
+        category: 'chinese',
+        icon: '🥜',
+        description: 'Chicken stir-fried with cashew nuts'
+    },
+    {
+        id: 69,
+        name: 'Szechuan Pork',
+        price: 8.99,
+        category: 'chinese',
+        icon: '🌶️',
+        description: 'Spicy numbing Szechuan pork'
+    },
+    {
+        id: 70,
+        name: 'Bitter Melon Chicken',
+        price: 7.99,
+        category: 'chinese',
+        icon: '🥬',
+        description: 'Chicken with bitter melon and black beans'
+    },
+    {
+        id: 71,
+        name: 'Lemon Chicken',
+        price: 8.49,
+        category: 'chinese',
+        icon: '🍋',
+        description: 'Crispy chicken with tangy lemon sauce'
+    },
+    {
+        id: 72,
+        name: 'Orange Beef',
+        price: 8.99,
+        category: 'chinese',
+        icon: '🍊',
+        description: 'Beef with orange peel and chili'
+    },
+    {
+        id: 73,
+        name: 'Salt & Pepper Squid',
+        price: 9.99,
+        category: 'chinese',
+        icon: '🦑',
+        description: 'Crispy squid with salt and pepper seasoning'
+    },
+    {
+        id: 74,
+        name: 'Honey Walnut Prawns',
+        price: 10.99,
+        category: 'chinese',
+        icon: '🦐',
+        description: 'Sweet honey glazed prawns with walnuts'
+    },
+    {
+        id: 75,
+        name: 'Spinach Chicken',
+        price: 7.99,
+        category: 'chinese',
+        icon: '🥬',
+        description: 'Chicken with fresh spinach and garlic'
+    },
+    {
+        id: 76,
+        name: 'Mushroom Tofu',
+        price: 6.99,
+        category: 'chinese',
+        icon: '🍄',
+        description: 'Silky tofu with mixed mushrooms'
+    },
+    {
+        id: 77,
+        name: 'Water Chestnuts Chicken',
+        price: 7.99,
+        category: 'chinese',
+        icon: '🥜',
+        description: 'Chicken with crispy water chestnuts'
+    },
+    {
+        id: 78,
+        name: 'Bamboo Shoots Pork',
+        price: 8.49,
+        category: 'chinese',
+        icon: '🌿',
+        description: 'Pork with tender bamboo shoots'
+    },
+    {
+        id: 79,
+        name: 'Ginger Beef',
+        price: 8.49,
+        category: 'chinese',
+        icon: '🌶️',
+        description: 'Beef with fresh ginger and scallions'
+    },
+    {
+        id: 80,
+        name: 'Mandarin Orange Chicken',
+        price: 8.99,
+        category: 'chinese',
+        icon: '🍊',
+        description: 'Sweet and tangy mandarin orange chicken'
     }
 ];
 
@@ -531,11 +651,28 @@ const menuItems = [
 let currentFilter = 'all';
 let selectedItemId = null;
 
+// Get cart from localStorage (access from script.js)
+let cart = JSON.parse(localStorage.getItem('foodVanCart')) || [];
+
 // Initialize menu on page load
 document.addEventListener('DOMContentLoaded', function() {
     renderMenuItems(menuItems);
     setupFilterButtons();
+    updateCartCount();
 });
+
+// Fallback - render immediately if DOM is already loaded
+if (document.readyState === 'loading') {
+    // Still loading
+} else {
+    // DOM already loaded
+    setTimeout(function() {
+        if (document.getElementById('menu-grid')) {
+            renderMenuItems(menuItems);
+            setupFilterButtons();
+        }
+    }, 100);
+}
 
 // ============================================
 // RENDER MENU ITEMS
@@ -656,4 +793,11 @@ function addToCart() {
 
 function saveCart() {
     localStorage.setItem('foodVanCart', JSON.stringify(cart));
+}
+
+function updateCartCount() {
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) {
+        cartCount.textContent = cart.length;
+    }
 }

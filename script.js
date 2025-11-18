@@ -213,3 +213,66 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// ============================================
+// SLIDER FUNCTIONALITY
+// ============================================
+
+let offerSlideIndex = 0;
+let isSliding = false;
+
+function slideOffers(direction) {
+    if (isSliding) return; // Prevent multiple simultaneous slides
+    
+    const offersGrid = document.getElementById('offersGrid');
+    if (!offersGrid) return;
+    
+    isSliding = true;
+    
+    // Get the actual card width from first card
+    const firstCard = offersGrid.querySelector('.offer-card');
+    if (!firstCard) {
+        isSliding = false;
+        return;
+    }
+    
+    const itemWidth = firstCard.offsetWidth;
+    const isMobile = window.innerWidth <= 480;
+    
+    // For mobile, step equals card width (since gap is 0)
+    // For desktop, add gap
+    const gap = isMobile ? 0 : 30;
+    const step = itemWidth + gap;
+    
+    // Calculate new position
+    if (direction === 'next') {
+        offerSlideIndex += step;
+    } else if (direction === 'prev') {
+        offerSlideIndex -= step;
+        if (offerSlideIndex < 0) offerSlideIndex = 0;
+    }
+    
+    // Prevent scrolling too far
+    const maxScroll = offersGrid.scrollWidth - offersGrid.parentElement.offsetWidth;
+    if (offerSlideIndex > maxScroll) {
+        offerSlideIndex = maxScroll;
+    }
+    
+    // Apply smooth transform with easing
+    offersGrid.style.transform = `translateX(-${offerSlideIndex}px)`;
+    
+    // Add visual feedback to button
+    const buttonClass = direction === 'next' ? '.slider-next' : '.slider-prev';
+    const button = document.querySelector(buttonClass);
+    if (button) {
+        button.style.transform = 'scale(1.15) translateY(-2px)';
+        setTimeout(() => {
+            button.style.transform = '';
+        }, 200);
+    }
+    
+    // Reset sliding flag after animation completes
+    setTimeout(() => {
+        isSliding = false;
+    }, 700);
+}

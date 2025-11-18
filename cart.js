@@ -2,6 +2,9 @@
    CART PAGE - JAVASCRIPT
    ============================================ */
 
+// Get cart from localStorage
+let cart = JSON.parse(localStorage.getItem('foodVanCart')) || [];
+
 // Display cart items on page load
 document.addEventListener('DOMContentLoaded', function() {
     displayCartItems();
@@ -172,6 +175,10 @@ function showNotification(message) {
     }, 3000);
 }
 
-// Load cart from localStorage on page load
-let cart = JSON.parse(localStorage.getItem('foodVanCart')) || [];
-updateCartCount();
+// updateCartCount function
+function updateCartCount() {
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) {
+        cartCount.textContent = cart.length;
+    }
+}
